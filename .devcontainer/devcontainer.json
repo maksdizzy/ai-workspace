@@ -1,0 +1,108 @@
+{
+  "name": "AI Workspace — Consultant",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "password": "workspace",
+      "webPort": "6080",
+      "vncPort": "5901"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "automatalabs.copilot-mcp",
+        "teabyii.ayu",
+        "cweijan.vscode-office",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-mermaid"
+      ],
+
+      "settings": {
+        "editor.minimap.enabled": false,
+        "breadcrumbs.enabled": false,
+        "editor.lineNumbers": "off",
+        "editor.renderLineHighlight": "none",
+        "editor.folding": false,
+        "editor.glyphMargin": false,
+        "editor.scrollbar.vertical": "auto",
+        "editor.scrollbar.horizontal": "auto",
+        "editor.overviewRulerBorder": false,
+
+        "debug.toolBarLocation": "hidden",
+        "scm.providerCountBadge": "hidden",
+        "problems.visibility": false,
+        "terminal.integrated.defaultLocation": "editor",
+
+        "window.menuBarVisibility": "compact",
+        "workbench.statusBar.visible": true,
+        "workbench.tips.enabled": false,
+        "workbench.startupEditor": "readme",
+        "workbench.welcomePage.walkthroughs.openOnInstall": false,
+
+        "workbench.activityBar.visible": true,
+        "debug.showInStatusBar": "never",
+
+        "workbench.colorTheme": "Ayu Light",
+        "editor.fontSize": 15,
+        "editor.lineHeight": 1.6,
+        "editor.fontFamily": "'Inter', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif",
+        "editor.wordWrap": "on",
+        "editor.tabSize": 2,
+
+        "workbench.editorAssociations": {
+          "*.xlsx": "cweijan.officeViewer",
+          "*.xls": "cweijan.officeViewer",
+          "*.docx": "cweijan.officeViewer",
+          "*.doc": "cweijan.officeViewer",
+          "*.pptx": "cweijan.officeViewer",
+          "*.ppt": "cweijan.officeViewer",
+          "*.pdf": "cweijan.officeViewer",
+          "*.csv": "cweijan.officeViewer"
+        },
+
+        "explorer.confirmDelete": false,
+        "explorer.confirmDragAndDrop": false,
+        "explorer.compactFolders": false,
+        "files.exclude": {
+          "**/.git": true,
+          "**/.devcontainer": true,
+          "**/.vscode": true,
+          "**/node_modules": true,
+          "**/__pycache__": true,
+          "**/.claude": true,
+          "**/.cursor": true,
+          "**/GUIDE.md": true
+        },
+
+        "markdown.preview.fontSize": 15,
+        "markdown.preview.lineHeight": 1.6,
+
+        "claudeCode.preferredLocation": "panel",
+        "claudeCode.allowDangerouslySkipPermissions": true,
+        "claudeCode.useTerminal": false,
+
+        "telemetry.telemetryLevel": "off",
+        "extensions.ignoreRecommendations": true,
+        "git.enabled": false,
+        "git.autoRepositoryDetection": false,
+        "update.showReleaseNotes": false
+      }
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "forwardPorts": [6080, 9274],
+
+  "remoteEnv": {
+    "PATH": "/home/vscode/.claude/local/bin:${containerEnv:PATH}"
+  },
+
+  "remoteUser": "vscode"
+}

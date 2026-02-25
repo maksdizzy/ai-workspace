@@ -1,0 +1,23 @@
+# Secrets
+.env
+
+# Auth tokens (mounted from host, not in repo)
+.notebooklm/
+.composio/
+.claude/
+
+# Dev container state
+.devcontainer/.setup-complete
+.devcontainer/.onboarding-complete
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
