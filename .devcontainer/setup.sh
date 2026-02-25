@@ -19,7 +19,7 @@ notebooklm skill install
 
 # --- Vercel Skills ---
 echo "🛠️ Installing Vercel skills..."
-npx skills add https://github.com/vercel-labs/skills --skill find-skills -a claude-code -y
+npx --yes skills add https://github.com/vercel-labs/skills --skill find-skills -a claude-code -y
 
 # --- Install .vsix extensions (extract directly, no 'code' CLI needed) ---
 echo "🧩 Installing local extensions..."
