@@ -98,6 +98,7 @@
   },
 
   "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postAttachCommand": "for vsix in .devcontainer/*.vsix; do [ -f \"$vsix\" ] && code --install-extension \"$vsix\" --force 2>/dev/null; done; true",
   "forwardPorts": [6080, 9274],
 
   "remoteEnv": {
