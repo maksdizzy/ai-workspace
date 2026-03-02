@@ -1,5 +1,6 @@
 #!/bin/bash
-set -e
+# Non-fatal: individual steps can fail without aborting the whole setup
+set +e
 
 echo ""
 echo "🔧 Setting up AI Workspace..."
@@ -9,16 +10,21 @@ echo ""
 echo "🔤 Installing Monaspace font..."
 FONT_DIR="$HOME/.local/share/fonts"
 mkdir -p "$FONT_DIR"
-curl -fsSL https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip -o /tmp/monaspace.zip
-unzip -qo /tmp/monaspace.zip -d /tmp/monaspace
-cp /tmp/monaspace/monaspace-v1.101/fonts/otf/*.otf "$FONT_DIR/"
-fc-cache -f "$FONT_DIR"
-rm -rf /tmp/monaspace /tmp/monaspace.zip
-echo "  ✅ Monaspace installed"
+if curl -fsSL https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip -o /tmp/monaspace.zip 2>/dev/null; then
+  unzip -qo /tmp/monaspace.zip -d /tmp/monaspace
+  # Find otf files regardless of version directory name
+  find /tmp/monaspace -name '*.otf' -exec cp {} "$FONT_DIR/" \;
+  fc-cache -f "$FONT_DIR" 2>/dev/null
+  rm -rf /tmp/monaspace /tmp/monaspace.zip
+  echo "  ✅ Monaspace installed"
+else
+  echo "  ⚠️ Monaspace download failed — terminal will use fallback monospace font"
+fi
 
 # --- Claude Code CLI ---
 echo "🤖 Installing Claude Code..."
 curl -fsSL https://claude.ai/install.sh | bash
+export PATH="$HOME/.claude/local/bin:$PATH"
 
 # --- NotebookLM Python API + browser deps ---
 echo "📓 Installing NotebookLM..."
@@ -26,21 +32,25 @@ pip install --quiet "notebooklm-py[browser]"
 echo "🌐 Installing Chromium for NotebookLM login..."
 playwright install --with-deps chromium
 echo "🔗 Installing NotebookLM Claude Code skills..."
-notebooklm skill install
+notebooklm skill install || echo "  ⚠️ NotebookLM skills install skipped"
 
 # --- Bun (required by claude-mem) ---
-echo "🧠 Installing Bun..."
+echo "⚡ Installing Bun..."
 curl -fsSL https://bun.sh/install | bash
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # --- Claude-Mem (persistent memory) ---
 echo "🧠 Installing Claude-Mem..."
-curl -fsSL https://install.cmem.ai | bash || echo "  ⚠️ Claude-Mem auto-install failed — install manually: /plugin marketplace add thedotmack/claude-mem"
+curl -fsSL https://install.cmem.ai | bash
+if [ $? -ne 0 ]; then
+  echo "  ⚠️ Claude-Mem auto-install failed — install manually inside Claude Code:"
+  echo "     /plugin marketplace add thedotmack/claude-mem"
+fi
 
 # --- Vercel Skills ---
 echo "🛠️ Installing Vercel skills..."
-npx --yes skills add https://github.com/vercel-labs/skills --skill find-skills -a claude-code -y
+npx --yes skills add https://github.com/vercel-labs/skills --skill find-skills -a claude-code -y || echo "  ⚠️ Vercel skills install skipped"
 
 # --- Install .vsix extensions (extract directly, no 'code' CLI needed) ---
 echo "🧩 Installing local extensions..."
