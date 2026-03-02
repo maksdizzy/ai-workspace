@@ -2,7 +2,7 @@
   "name": "ai-workspace-welcome",
   "displayName": "AI Workspace — Welcome",
   "description": "Welcome page and setup wizard for AI Workspace",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "maksdizzy",
   "engines": {
     "vscode": "^1.85.0"

@@ -96,7 +96,42 @@ async function pasteCredentials() {
   }
 }
 
+async function hideUnwantedViews(context) {
+  const alreadyHidden = context.globalState.get("activityBarCleaned", false);
+  if (alreadyHidden) return;
+
+  // Wait for VS Code to fully initialize
+  await new Promise((r) => setTimeout(r, 3000));
+
+  const viewsToHide = [
+    "workbench.view.scm",
+    "workbench.view.debug",
+    "workbench.view.testing",
+    "workbench.view.extension.github-pull-requests",
+    "workbench.view.extension.github-pull-request",
+  ];
+
+  for (const id of viewsToHide) {
+    // Try multiple internal command signatures (varies by VS Code version)
+    for (const cmd of [
+      "vscode.setViewContainerVisibility",
+      "_workbench.setViewContainerVisible",
+    ]) {
+      try {
+        await vscode.commands.executeCommand(cmd, { id, visible: false });
+      } catch {
+        // Command not available in this VS Code version — ignore
+      }
+    }
+  }
+
+  context.globalState.update("activityBarCleaned", true);
+}
+
 function activate(context) {
+  // Clean up activity bar for non-technical users
+  hideUnwantedViews(context);
+
   // Main login command — auto-detects environment
   context.subscriptions.push(
     vscode.commands.registerCommand(
