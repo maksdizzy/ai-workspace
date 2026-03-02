@@ -28,6 +28,16 @@ playwright install --with-deps chromium
 echo "🔗 Installing NotebookLM Claude Code skills..."
 notebooklm skill install
 
+# --- Bun (required by claude-mem) ---
+echo "🧠 Installing Bun..."
+curl -fsSL https://bun.sh/install | bash
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# --- Claude-Mem (persistent memory) ---
+echo "🧠 Installing Claude-Mem..."
+curl -fsSL https://install.cmem.ai | bash || echo "  ⚠️ Claude-Mem auto-install failed — install manually: /plugin marketplace add thedotmack/claude-mem"
+
 # --- Vercel Skills ---
 echo "🛠️ Installing Vercel skills..."
 npx --yes skills add https://github.com/vercel-labs/skills --skill find-skills -a claude-code -y

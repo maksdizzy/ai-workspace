@@ -82,6 +82,7 @@
           "**/node_modules": true,
           "**/__pycache__": true,
           "**/.claude": true,
+          "**/.claude-mem": true,
           "**/.cursor": true,
           "**/GUIDE.md": true
         },
@@ -107,10 +108,17 @@
 
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "postAttachCommand": "for vsix in .devcontainer/*.vsix; do [ -f \"$vsix\" ] && code --install-extension \"$vsix\" --force 2>/dev/null; done; true",
-  "forwardPorts": [6080, 9274],
+  "forwardPorts": [6080, 9274, 37777],
+  "portsAttributes": {
+    "37777": {
+      "label": "Claude-Mem Dashboard",
+      "onAutoForward": "notify"
+    }
+  },
 
   "remoteEnv": {
-    "PATH": "/home/vscode/.claude/local/bin:${containerEnv:PATH}"
+    "PATH": "/home/vscode/.bun/bin:/home/vscode/.claude/local/bin:${containerEnv:PATH}",
+    "CLAUDE_MEM_WORKER_PORT": "37777"
   },
 
   "remoteUser": "vscode"
