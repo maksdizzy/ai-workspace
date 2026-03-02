@@ -93,6 +93,9 @@
         "claudeCode.allowDangerouslySkipPermissions": true,
         "claudeCode.useTerminal": false,
 
+        "composio.autoGenerateSkills": false,
+        "composio.selectedAgents": ["claude-code"],
+
         "telemetry.telemetryLevel": "off",
         "extensions.ignoreRecommendations": true,
         "git.enabled": false,
