@@ -41,6 +41,8 @@
         "scm.providerCountBadge": "hidden",
         "problems.visibility": false,
         "testing.openTesting": "neverOpen",
+        "terminal.integrated.fontFamily": "'Monaspace Neon', 'DejaVu Sans Mono', monospace",
+        "terminal.integrated.fontSize": 14,
         "terminal.integrated.defaultLocation": "editor",
 
         "window.menuBarVisibility": "compact",

@@ -5,6 +5,17 @@ echo ""
 echo "🔧 Setting up AI Workspace..."
 echo ""
 
+# --- Monaspace font (GitHub's monospace font for terminal) ---
+echo "🔤 Installing Monaspace font..."
+FONT_DIR="$HOME/.local/share/fonts"
+mkdir -p "$FONT_DIR"
+curl -fsSL https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip -o /tmp/monaspace.zip
+unzip -qo /tmp/monaspace.zip -d /tmp/monaspace
+cp /tmp/monaspace/monaspace-v1.101/fonts/otf/*.otf "$FONT_DIR/"
+fc-cache -f "$FONT_DIR"
+rm -rf /tmp/monaspace /tmp/monaspace.zip
+echo "  ✅ Monaspace installed"
+
 # --- Claude Code CLI ---
 echo "🤖 Installing Claude Code..."
 curl -fsSL https://claude.ai/install.sh | bash
