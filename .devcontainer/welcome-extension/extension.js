@@ -97,11 +97,13 @@ async function pasteCredentials() {
 }
 
 async function hideUnwantedViews(context) {
-  const alreadyHidden = context.globalState.get("activityBarCleaned", false);
-  if (alreadyHidden) return;
+  // Version the flag so we can retry when we fix command names
+  const CLEANUP_VERSION = 3;
+  const doneVersion = context.globalState.get("activityBarCleanedVersion", 0);
+  if (doneVersion >= CLEANUP_VERSION) return;
 
-  // Wait for VS Code to fully initialize
-  await new Promise((r) => setTimeout(r, 3000));
+  // Wait for VS Code to fully initialize all view containers
+  await new Promise((r) => setTimeout(r, 5000));
 
   const viewsToHide = [
     "workbench.view.scm",
@@ -109,23 +111,29 @@ async function hideUnwantedViews(context) {
     "workbench.view.testing",
     "workbench.view.extension.github-pull-requests",
     "workbench.view.extension.github-pull-request",
+    "workbench.view.extension.references-view",
+  ];
+
+  // The correct command (VS Code 1.93+) is "setViewContainerVisibility"
+  // without any prefix. Earlier versions don't have this command.
+  const commands = [
+    "setViewContainerVisibility",
+    "vscode.setViewContainerVisibility",
+    "_workbench.setViewContainerVisible",
   ];
 
   for (const id of viewsToHide) {
-    // Try multiple internal command signatures (varies by VS Code version)
-    for (const cmd of [
-      "vscode.setViewContainerVisibility",
-      "_workbench.setViewContainerVisible",
-    ]) {
+    for (const cmd of commands) {
       try {
         await vscode.commands.executeCommand(cmd, { id, visible: false });
+        break; // success — skip other command variants for this view
       } catch {
-        // Command not available in this VS Code version — ignore
+        // not available — try next
       }
     }
   }
 
-  context.globalState.update("activityBarCleaned", true);
+  context.globalState.update("activityBarCleanedVersion", CLEANUP_VERSION);
 }
 
 function activate(context) {
