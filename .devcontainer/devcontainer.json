@@ -112,7 +112,7 @@
   "portsAttributes": {
     "37777": {
       "label": "Claude-Mem Dashboard",
-      "onAutoForward": "notify"
+      "onAutoForward": "openPreview"
     }
   },
 
