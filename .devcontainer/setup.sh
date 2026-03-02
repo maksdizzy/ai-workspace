@@ -36,9 +36,9 @@ bun --version && echo "  ✅ Bun OK" || echo "  ⚠️ Bun install failed"
 # =============================================================
 echo "🤖 Installing Claude Code CLI..."
 curl -fsSL https://claude.ai/install.sh | bash
-export PATH="$HOME/.claude/local/bin:$PATH"
-if [ -f "$HOME/.claude/local/bin/claude" ]; then
-  echo "  ✅ Claude CLI OK"
+export PATH="$HOME/.local/bin:$HOME/.claude/local/bin:$PATH"
+if command -v claude &>/dev/null; then
+  echo "  ✅ Claude CLI OK ($(which claude))"
 else
   echo "  ⚠️ Claude CLI not found — will use VS Code extension only"
 fi
@@ -61,7 +61,13 @@ python3 -m playwright install --with-deps chromium || echo "  ⚠️ Playwright/
 # 5. NotebookLM skills (depends on notebooklm CLI from step 4)
 # =============================================================
 echo "🔗 Installing NotebookLM Claude Code skills..."
-python3 -m notebooklm skill install || echo "  ⚠️ NotebookLM skills install skipped"
+# notebooklm CLI is installed by pip into the same bin dir as python3
+NOTEBOOKLM_BIN=$(python3 -c "import shutil; print(shutil.which('notebooklm') or '')" 2>/dev/null)
+if [ -n "$NOTEBOOKLM_BIN" ]; then
+  "$NOTEBOOKLM_BIN" skill install || echo "  ⚠️ NotebookLM skills install failed"
+else
+  echo "  ⚠️ notebooklm CLI not found — skills install skipped"
+fi
 
 # =============================================================
 # 6. Claude-Mem persistent memory (non-interactive install)

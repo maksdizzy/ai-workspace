@@ -117,7 +117,7 @@
   },
 
   "remoteEnv": {
-    "PATH": "/home/vscode/.bun/bin:/home/vscode/.claude/local/bin:${containerEnv:PATH}",
+    "PATH": "/home/vscode/.bun/bin:/home/vscode/.local/bin:/home/vscode/.claude/local/bin:${containerEnv:PATH}",
     "CLAUDE_MEM_WORKER_PORT": "37777"
   },
 
