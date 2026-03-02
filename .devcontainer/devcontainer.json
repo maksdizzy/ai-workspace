@@ -17,8 +17,8 @@
     "vscode": {
       "extensions": [
         "anthropic.claude-code",
+        "maksdizzy.mcp-integration-skills",
         "automatalabs.copilot-mcp",
-        "teabyii.ayu",
         "cweijan.vscode-office",
         "yzhang.markdown-all-in-one",
         "bierner.markdown-mermaid"
@@ -36,8 +36,11 @@
         "editor.overviewRulerBorder": false,
 
         "debug.toolBarLocation": "hidden",
+        "debug.openDebug": "neverOpen",
+        "debug.showBreakpointsInOverviewRuler": false,
         "scm.providerCountBadge": "hidden",
         "problems.visibility": false,
+        "testing.openTesting": "neverOpen",
         "terminal.integrated.defaultLocation": "editor",
 
         "window.menuBarVisibility": "compact",
@@ -49,7 +52,7 @@
         "workbench.activityBar.visible": true,
         "debug.showInStatusBar": "never",
 
-        "workbench.colorTheme": "Ayu Light",
+        "workbench.colorTheme": "Solarized Dark",
         "editor.fontSize": 15,
         "editor.lineHeight": 1.6,
         "editor.fontFamily": "'Inter', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif",
