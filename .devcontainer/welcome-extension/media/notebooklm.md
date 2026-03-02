@@ -7,7 +7,8 @@ NotebookLM needs a one-time Google sign-in. The setup flow adapts to your enviro
 1. Click **Connect NotebookLM** — a virtual desktop opens in a new browser tab
 2. Enter password: **workspace**
 3. Click **Start Login** — Chromium appears in the virtual desktop
-4. Sign in with Google, close the desktop tab — done!
+4. Sign in with Google, then switch back to the terminal and press **Enter** to confirm
+5. Close the desktop tab — done!
 
 ### Local (Docker Desktop)
 
