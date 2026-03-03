@@ -37,8 +37,11 @@ bun --version && echo "  ✅ Bun OK" || echo "  ⚠️ Bun install failed"
 echo "🤖 Installing Claude Code CLI..."
 curl -fsSL https://claude.ai/install.sh | bash
 export PATH="$HOME/.local/bin:$HOME/.claude/local/bin:$PATH"
-if command -v claude &>/dev/null; then
-  echo "  ✅ Claude CLI OK ($(which claude))"
+# Verify — check known install locations directly (PATH may not refresh in same shell)
+if [ -x "$HOME/.local/bin/claude" ]; then
+  echo "  ✅ Claude CLI OK ($HOME/.local/bin/claude)"
+elif [ -x "$HOME/.claude/local/bin/claude" ]; then
+  echo "  ✅ Claude CLI OK ($HOME/.claude/local/bin/claude)"
 else
   echo "  ⚠️ Claude CLI not found — will use VS Code extension only"
 fi
@@ -61,10 +64,11 @@ python3 -m playwright install --with-deps chromium || echo "  ⚠️ Playwright/
 # 5. NotebookLM skills (depends on notebooklm CLI from step 4)
 # =============================================================
 echo "🔗 Installing NotebookLM Claude Code skills..."
-# notebooklm CLI is installed by pip into the same bin dir as python3
-NOTEBOOKLM_BIN=$(python3 -c "import shutil; print(shutil.which('notebooklm') or '')" 2>/dev/null)
-if [ -n "$NOTEBOOKLM_BIN" ]; then
-  "$NOTEBOOKLM_BIN" skill install || echo "  ⚠️ NotebookLM skills install failed"
+# pip installs CLI scripts to Python's scripts dir — ensure it's in PATH
+PYTHON_SCRIPTS=$(python3 -c "import sysconfig; print(sysconfig.get_path('scripts'))" 2>/dev/null)
+export PATH="${PYTHON_SCRIPTS}:$PATH"
+if command -v notebooklm &>/dev/null; then
+  notebooklm skill install || echo "  ⚠️ NotebookLM skills install failed"
 else
   echo "  ⚠️ notebooklm CLI not found — skills install skipped"
 fi
