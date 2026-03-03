@@ -74,12 +74,25 @@ else
 fi
 
 # =============================================================
-# 6. Claude-Mem — skip auto-install, requires interactive TTY
-#    Install manually after workspace starts:
-#    curl -fsSL https://install.cmem.ai | bash
+# 6. Claude-Mem persistent memory (via Claude CLI plugin system)
 # =============================================================
-echo "🧠 Claude-Mem: install manually after setup completes:"
-echo "     curl -fsSL https://install.cmem.ai | bash"
+echo "🧠 Installing Claude-Mem..."
+CLAUDE_BIN=""
+if [ -x "$HOME/.local/bin/claude" ]; then
+  CLAUDE_BIN="$HOME/.local/bin/claude"
+elif [ -x "$HOME/.claude/local/bin/claude" ]; then
+  CLAUDE_BIN="$HOME/.claude/local/bin/claude"
+fi
+
+if [ -n "$CLAUDE_BIN" ]; then
+  "$CLAUDE_BIN" plugin marketplace add thedotmack/claude-mem && \
+  "$CLAUDE_BIN" plugin install claude-mem && \
+  echo "  ✅ Claude-Mem installed" || \
+  echo "  ⚠️ Claude-Mem install failed — run manually: claude plugin marketplace add thedotmack/claude-mem && claude plugin install claude-mem"
+else
+  echo "  ⚠️ Claude CLI not available — install Claude-Mem manually after setup:"
+  echo "     claude plugin marketplace add thedotmack/claude-mem && claude plugin install claude-mem"
+fi
 
 # =============================================================
 # 7. Vercel Skills (depends on npx/node)
