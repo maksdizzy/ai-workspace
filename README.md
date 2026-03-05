@@ -1,10 +1,16 @@
-# AI Workspace
+<div align="center">
 
-A pre-configured, ready-to-use workspace with AI assistant, research tools, and 200+ integrations. Built for non-technical users — no coding required.
+<img src="https://img.shields.io/badge/AI-Workspace-6366f1?style=for-the-badge&logo=robot&logoColor=white" alt="AI Workspace" height="48">
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/maksdizzy/ai-workspace?quickstart=1)
+<p>A pre-configured, ready-to-use workspace with AI assistant, research tools, and 200+ integrations.<br>Built for non-technical users — no coding required.</p>
+
+<br>
+
+[![Open in Codespaces](https://img.shields.io/badge/Open_in-Codespaces-2ea44f?style=for-the-badge&logo=github)](https://codespaces.new/maksdizzy/ai-workspace?quickstart=1)
 &nbsp;&nbsp;
-[![Open locally in VS Code](https://img.shields.io/badge/Open_locally-VS_Code-007ACC?logo=visualstudiocode)](vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/maksdizzy/ai-workspace)
+[![Open locally in VS Code](https://img.shields.io/badge/Open_locally-VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode)](vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/maksdizzy/ai-workspace)
+
+</div>
 
 ## Features
 
@@ -27,18 +33,14 @@ You need three things installed on your computer:
 3. **Dev Containers extension** — connects VS Code to Docker
    - [Install Dev Containers](vscode:extension/ms-vscode-remote.remote-containers) (opens VS Code automatically)
 
-Once everything is installed, click the badge to launch:
-
-[![Open locally in VS Code](https://img.shields.io/badge/Open_locally-VS_Code-007ACC?logo=visualstudiocode)](vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/maksdizzy/ai-workspace)
+Once everything is installed, click **Open locally in VS Code** at the top of this page.
 
 > [!NOTE]
 > First launch takes 3–5 minutes while the container is built. After that, it opens instantly.
 
 ### Cloud
 
-No installation needed — launch directly in your browser via GitHub Codespaces:
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/maksdizzy/ai-workspace?quickstart=1)
+No installation needed — click **Open in Codespaces** at the top of this page to launch directly in your browser.
 
 ## Usage
 

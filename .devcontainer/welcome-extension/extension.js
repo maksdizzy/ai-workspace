@@ -175,22 +175,30 @@ function getWelcomeHtml() {
 function activate(context) {
   hideUnwantedViews(context);
 
-  // Command: Connect NotebookLM — opens noVNC, runs login in hidden terminal,
-  // shows status bar button + notification to confirm login
+  // Command: Connect NotebookLM — opens noVNC for Google sign-in
+  // Codespaces: embedded Simple Browser | Local: host browser
   context.subscriptions.push(
     vscode.commands.registerCommand(
       "ai-workspace.notebooklmLogin",
       async () => {
+        const isCodespaces = process.env.CODESPACES === "true";
+
         const terminal = vscode.window.createTerminal({
           name: "NotebookLM Login",
           hideFromUser: true,
         });
         terminal.sendText("DISPLAY=:1 notebooklm login");
 
-        await vscode.commands.executeCommand(
-          "simpleBrowser.show",
-          "http://localhost:6080",
-        );
+        if (isCodespaces) {
+          await vscode.commands.executeCommand(
+            "simpleBrowser.show",
+            "http://localhost:6080",
+          );
+        } else {
+          await vscode.env.openExternal(
+            vscode.Uri.parse("http://localhost:6080"),
+          );
+        }
 
         // Status bar button stays visible until clicked
         const statusItem = vscode.window.createStatusBarItem(
@@ -212,15 +220,16 @@ function activate(context) {
             statusItem.dispose();
             confirmDisposable.dispose();
             vscode.window.showInformationMessage(
-              "NotebookLM connected! You can close the Desktop Viewer tab.",
+              "NotebookLM connected! You can close the browser tab.",
             );
           },
         );
         context.subscriptions.push(confirmDisposable);
 
-        vscode.window.showInformationMessage(
-          "Sign in to Google in the Desktop Viewer (password: workspace). Click the status bar button when done.",
-        );
+        const msg = isCodespaces
+          ? "Sign in to Google in the Desktop Viewer (password: workspace). Click the status bar button when done."
+          : "Sign in to Google in the browser tab that opened (password: workspace). Click the status bar button when done.";
+        vscode.window.showInformationMessage(msg);
       },
     ),
   );
