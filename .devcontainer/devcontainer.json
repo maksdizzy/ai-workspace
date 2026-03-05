@@ -26,7 +26,7 @@
       "settings": {
         "window.title": "AI Workspace",
         "window.commandCenter": false,
-        "workbench.layoutControl.enabled": false,
+        "workbench.layoutControl.enabled": true,
         "workbench.browser.openLocalhostLinks": true,
 
         "editor.minimap.enabled": false,
