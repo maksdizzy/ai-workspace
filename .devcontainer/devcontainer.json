@@ -1,10 +1,9 @@
 {
-  "name": "AI Workspace — Consultant",
+  "name": "AI Workspace",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
 
   "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
-    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" },
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" },
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/desktop-lite:1": {
       "password": "workspace",
@@ -25,7 +24,13 @@
       ],
 
       "settings": {
+        "window.title": "AI Workspace",
+        "window.commandCenter": false,
+        "workbench.layoutControl.enabled": false,
+        "workbench.browser.openLocalhostLinks": true,
+
         "editor.minimap.enabled": false,
+        "editor.stickyScroll.enabled": false,
         "breadcrumbs.enabled": false,
         "editor.lineNumbers": "off",
         "editor.renderLineHighlight": "none",
@@ -84,7 +89,7 @@
           "**/.claude": true,
           "**/.claude-mem": true,
           "**/.cursor": true,
-          "**/GUIDE.md": true
+          "**/.env.example": true
         },
 
         "markdown.preview.fontSize": 15,
@@ -108,7 +113,7 @@
 
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "postAttachCommand": "for vsix in .devcontainer/*.vsix; do [ -f \"$vsix\" ] && code --install-extension \"$vsix\" --force 2>/dev/null; done; true",
-  "forwardPorts": [6080, 9274, 37777],
+  "forwardPorts": [6080, 37777],
   "portsAttributes": {
     "37777": {
       "label": "Claude-Mem Dashboard",
