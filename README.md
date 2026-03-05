@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/AI-Workspace-6366f1?style=for-the-badge&logo=robot&logoColor=white" alt="AI Workspace" height="48">
+<img src=".github/logo.svg" alt="AI Workspace" width="480">
 
 <p>A pre-configured, ready-to-use workspace with AI assistant, research tools, and 200+ integrations.<br>Built for non-technical users — no coding required.</p>
 

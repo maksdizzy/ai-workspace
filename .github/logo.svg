@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="120" rx="16" fill="url(#bg)"/>
+  <g transform="translate(36, 28)" fill="none" stroke="#e0d8ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 6c-5.5 0-10 3.5-12 8.5A13 13 0 0 0 12 35c0 7.5 4.5 13 11 15v4.5a3.5 3.5 0 0 0 3.5 3.5h11a3.5 3.5 0 0 0 3.5-3.5V50c6.5-2 11-7.5 11-15a13 13 0 0 0-8-20.5C42 9.5 37.5 6 32 6z" fill="#ffffff" fill-opacity="0.15"/>
+    <line x1="32" y1="22" x2="32" y2="40"/>
+    <line x1="25" y1="26" x2="25" y2="36"/>
+    <line x1="39" y1="26" x2="39" y2="36"/>
+    <circle cx="32" cy="18" r="2.5" fill="#e0d8ff"/>
+    <circle cx="25" cy="23" r="2" fill="#e0d8ff"/>
+    <circle cx="39" cy="23" r="2" fill="#e0d8ff"/>
+  </g>
+  <text x="112" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="700" fill="#ffffff">AI Workspace</text>
+  <text x="112" y="84" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#c4b5fd">Your AI-powered productivity environment</text>
+</svg>
