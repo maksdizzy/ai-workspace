@@ -6,7 +6,7 @@
 
 </div>
 
-[![Open in Codespaces](https://img.shields.io/badge/Open_in-Codespaces-2ea44f?style=for-the-badge&logo=github)](https://codespaces.new/maksdizzy/ai-workspace?quickstart=1)&nbsp;&nbsp;[![Open locally in VS Code](https://img.shields.io/badge/Open_locally-VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode)](vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/maksdizzy/ai-workspace)
+[![Open in Codespaces](https://img.shields.io/badge/Open_in-Codespaces-2ea44f?style=for-the-badge&logo=github)](https://codespaces.new/maksdizzy/ai-workspace?quickstart=1)&nbsp;&nbsp;[![Open locally in VS Code](https://img.shields.io/badge/Open_locally-VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode)](#local-recommended)
 
 ## Features
 
@@ -27,9 +27,13 @@ You need three things installed on your computer:
 2. **VS Code** — the editor where the workspace runs
    - [Download VS Code](https://code.visualstudio.com/)
 3. **Dev Containers extension** — connects VS Code to Docker
-   - [Install Dev Containers](vscode:extension/ms-vscode-remote.remote-containers) (opens VS Code automatically)
+   - [Install Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-Once everything is installed, click **Open locally in VS Code** at the top of this page.
+Once everything is installed, open VS Code and press `Ctrl+Shift+P` → **Dev Containers: Clone Repository in Container Volume** → paste:
+
+```
+https://github.com/maksdizzy/ai-workspace
+```
 
 > [!NOTE]
 > First launch takes 3–5 minutes while the container is built. After that, it opens instantly.
