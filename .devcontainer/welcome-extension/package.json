@@ -1,8 +1,8 @@
 {
   "name": "ai-workspace-welcome",
   "displayName": "AI Workspace — Welcome",
-  "description": "Welcome page and setup wizard for AI Workspace",
-  "version": "0.0.5",
+  "description": "Welcome panel and setup commands for AI Workspace",
+  "version": "0.1.0",
   "publisher": "maksdizzy",
   "engines": {
     "vscode": "^1.85.0"
@@ -16,37 +16,12 @@
         "title": "AI Workspace: Connect NotebookLM"
       },
       {
-        "command": "ai-workspace.pasteCredentials",
-        "title": "AI Workspace: Paste NotebookLM Credentials"
+        "command": "ai-workspace.openIntegrations",
+        "title": "AI Workspace: Open Integrations"
       },
       {
-        "command": "ai-workspace.notebooklmCheck",
-        "title": "AI Workspace: Verify NotebookLM Connection"
-      }
-    ],
-    "walkthroughs": [
-      {
-        "id": "ai-workspace-setup",
-        "title": "Welcome to AI Workspace",
-        "description": "Let's set up your workspace tools",
-        "steps": [
-          {
-            "id": "notebooklm-login",
-            "title": "Connect NotebookLM",
-            "description": "Connect your Google account for research and knowledge management.\n\n[$(sign-in) Connect NotebookLM](command:ai-workspace.notebooklmLogin)",
-            "media": {
-              "markdown": "media/notebooklm.md"
-            }
-          },
-          {
-            "id": "notebooklm-verify",
-            "title": "Verify Connection",
-            "description": "Check that NotebookLM is working.\n\n[$(check) Verify Connection](command:ai-workspace.notebooklmCheck)",
-            "media": {
-              "markdown": "media/verify.md"
-            }
-          }
-        ]
+        "command": "ai-workspace.openSkills",
+        "title": "AI Workspace: Open Skills"
       }
     ]
   }
