@@ -4,13 +4,9 @@
 
 <p>A pre-configured, ready-to-use workspace with AI assistant, research tools, and 200+ integrations.<br>Built for non-technical users — no coding required.</p>
 
-<br>
-
-<a href="https://codespaces.new/maksdizzy/ai-workspace?quickstart=1"><img src="https://img.shields.io/badge/Open_in-Codespaces-2ea44f?style=for-the-badge&logo=github" alt="Open in Codespaces"></a>
-&nbsp;&nbsp;
-<a href="vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/maksdizzy/ai-workspace"><img src="https://img.shields.io/badge/Open_locally-VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode" alt="Open locally in VS Code"></a>
-
 </div>
+
+[![Open in Codespaces](https://img.shields.io/badge/Open_in-Codespaces-2ea44f?style=for-the-badge&logo=github)](https://codespaces.new/maksdizzy/ai-workspace?quickstart=1)&nbsp;&nbsp;[![Open locally in VS Code](https://img.shields.io/badge/Open_locally-VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode)](vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/maksdizzy/ai-workspace)
 
 ## Features
 
