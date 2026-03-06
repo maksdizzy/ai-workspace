@@ -58,7 +58,9 @@ else
 fi
 
 echo "  Installing Chromium for NotebookLM login..."
-python3 -m playwright install --with-deps chromium || echo "  SKIP: Chromium install failed"
+# --with-deps needs root for system packages (libnss3, libatk, etc.)
+sudo python3 -m playwright install-deps chromium 2>/dev/null || true
+python3 -m playwright install chromium && echo "  OK: Chromium installed" || echo "  SKIP: Chromium install failed"
 
 # =============================================================
 # 5. NotebookLM skills for Claude Code
