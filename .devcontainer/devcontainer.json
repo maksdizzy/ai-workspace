@@ -81,15 +81,10 @@
         "explorer.confirmDragAndDrop": false,
         "explorer.compactFolders": false,
         "files.exclude": {
-          "**/.git": true,
-          "**/.devcontainer": true,
-          "**/.vscode": true,
+          "**/.*": true,
           "**/node_modules": true,
           "**/__pycache__": true,
-          "**/.claude": true,
-          "**/.claude-mem": true,
-          "**/.cursor": true,
-          "**/.env.example": true
+          "skills-lock.json": true
         },
 
         "markdown.preview.fontSize": 15,
