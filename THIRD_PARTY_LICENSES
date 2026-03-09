@@ -1,0 +1,23 @@
+Third-Party Licenses
+====================
+
+This project uses the following third-party extensions and tools.
+
+1. Copilot MCP (automatalabs.copilot-mcp)
+   License: GPL-3.0 (GNU General Public License v3)
+   Source:  https://github.com/vikashloomba/copilot-mcp
+   Notes:   Derivative works must also be distributed under GPL-3.0.
+
+2. Claude-Mem (thedotmack/claude-mem)
+   License: AGPL-3.0 (GNU Affero General Public License v3)
+   Source:  https://github.com/thedotmack/claude-mem
+   Notes:   Server-side deployments require source code disclosure.
+            The ragtime/ subdirectory is licensed separately under
+            PolyForm Noncommercial 1.0.0 — commercial use is prohibited.
+
+Compatibility with Project License (CC BY-NC 4.0)
+--------------------------------------------------
+All third-party licenses are compatible with the non-commercial scope of
+this project. If the project license is ever changed to permit commercial
+use, the PolyForm Noncommercial component (ragtime/) in claude-mem will
+be a blocking restriction and must be addressed first.
